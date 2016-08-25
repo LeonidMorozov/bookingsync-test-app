@@ -2,13 +2,11 @@ class AccountsController < ApplicationController
   before_action :authenticate_account!
   after_action :allow_bookingsync_iframe
 
-  # GET /accounts
-  # GET /accounts.json
+  # GET /accounts.html
   def index
   end
 
-  # GET /groups/1
-  # GET /groups/1.json
+  # GET /accounts/1.html
   def show
   end
 end
