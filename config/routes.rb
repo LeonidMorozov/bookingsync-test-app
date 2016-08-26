@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   mount BookingSync::Engine => '/'
 
-  resources :accounts, only: [:index, :show]
+  resources :accounts, only: [:index, :show] do
+    collection do
+      get "current", to: "accounts#current"
+    end
+  end
 
-  root :to => "accounts#index"
+  root :to => "accounts#current"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
