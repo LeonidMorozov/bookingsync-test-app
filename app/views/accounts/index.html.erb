@@ -9,6 +9,7 @@
   </tr>
 
   <% @accounts.each do |account| %>
+    <%= account.inspect %>
     <tr>
       <td><%= account['business_name'] %></td>
       <td><%= account['status'] %></td>
