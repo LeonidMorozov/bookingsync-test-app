@@ -1,0 +1,19 @@
+<h1>Rentals</h1>
+
+<% if @rentals %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+
+  <% @rentals.each do |rental| %>
+    <tr>
+      <td><%= link_to rental[:name], action: :show, id: rental[:id] %></td>
+      <td><%= rental[:rental_type] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%end%>
