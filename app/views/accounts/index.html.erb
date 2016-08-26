@@ -10,8 +10,8 @@
 
   <% @accounts.each do |account| %>
     <tr>
-      <td><%= link_to account.business_name, account %></td>
-      <td><%= account.status %></td>
+      <td><%= account['business_name'] %></td>
+      <td><%= account['status'] %></td>
     </tr>
   <% end %>
 </table>
