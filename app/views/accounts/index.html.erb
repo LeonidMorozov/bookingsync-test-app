@@ -9,7 +9,6 @@
   </tr>
 
   <% @accounts.each do |account| %>
-    <%= account.inspect %>
     <tr>
       <td><%= link_to account[:business_name], action: :show, id: account[:id] %></td>
       <td><%= account[:status] %></td>
