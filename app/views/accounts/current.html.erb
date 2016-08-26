@@ -1,9 +1,4 @@
 <h1>Current account</h1>
 
-<% @current_account.keys.each do |key| %>
-  <tr>
-    <td align="right"><%= key %>:</td>
-    <td></td>
-    <td><%= @current_account[key] %></td>
-  </tr>
-<% end %>
+<%= @current_account.inspect %>
+
