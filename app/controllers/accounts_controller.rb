@@ -4,6 +4,8 @@ class AccountsController < ApplicationController
 
   # GET /accounts.html
   def index
+    @per_page = params[:per_page].present? ? params[:per_page].to_i : 50
+    @accounts = bookingsync_api.accounts(per_page: @per_page, page: params[:page])
   end
 
   # GET /accounts/1.html

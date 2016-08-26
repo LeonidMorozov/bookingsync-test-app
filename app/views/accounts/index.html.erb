@@ -1,1 +1,21 @@
-<h1>Accounts Manager</h1>
+<h1>Accounts</h1>
+
+<% if @accounts %>
+  <%= will_paginate @accounts, :style => 'color:blue' %>
+
+<table>
+  <tr>
+    <th>Business name</th>
+    <th>Status</th>
+  </tr>
+
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= link_to account.business_name, account %></td>
+      <td><%= account.status %></td>
+    </tr>
+  <% end %>
+</table>
+
+  <%= will_paginate @accounts, :style => 'color:blue' %>
+<%end%>
