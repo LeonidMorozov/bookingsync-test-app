@@ -1,12 +1,14 @@
 <h1>Rentals</h1>
 
-<% form_tag accounts_path, method: :get do %>
+<% form_tag rentals_path, method: :get do %>
   <p>
     <%= text_field_tag :city, params[:city] %>
     <%= select_tag :rental_type, options_for_select(@rental_types.collect {|p| [ p[:name], p[:id] ] }) %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
+
+<hr/>
 
 <% if @rentals %>
 
