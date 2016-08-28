@@ -6,7 +6,7 @@
 
 <% if @bookings.any? %>
 
-<table>
+<table cellspacing="10">
   <tr>
     <th>ID</th>
     <th>Start at</th>
@@ -17,8 +17,8 @@
   <% @bookings.each do |booking| %>
     <tr>
       <td><%= link_to booking[:id], action: :show, id: booking[:id] %></td>
-      <td><%= booking[:start_at] %></td>
-      <td><%= booking[:end_at] %></td>
+      <td><%= Date.parse(booking[:start_at]).strftime("%Y-%m-%d") %></td>
+      <td><%= Date.parse(booking[:end_at]).strftime("%Y-%m-%d") %></td>
       <td><%= booking[:status] %></td>
     </tr>
   <% end %>
