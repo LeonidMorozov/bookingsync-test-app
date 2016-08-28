@@ -1,0 +1,7 @@
+<% form_tag accounts_path, method: :get do %>
+  <p>
+    <%= text_field_tag :city, params[:city] %>
+    <%= collection_select(:rental_type, :key, @rental_types, :id, :name) %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>

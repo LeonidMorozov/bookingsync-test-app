@@ -11,6 +11,7 @@
   <% @rentals.each do |rental| %>
     <tr>
       <td><%= link_to rental[:name], action: :show, id: rental[:id] %></td>
+      <% #TODO: should be ENUM value instead %>
       <td><%= rental[:rental_type] %></td>
     </tr>
   <% end %>

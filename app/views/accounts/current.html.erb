@@ -1,1 +1,8 @@
-<h1>Hello <%= @current_account.inspect %></h1>
+<h1>Hello <%= @current_account.name %></h1>
+
+Here you can see:
+
+<ul>
+  <li><%= link_to 'Accounts', accounts_path %></li>
+  <li><%= link_to 'Rentals', rentals_path %></li>
+</ul>
