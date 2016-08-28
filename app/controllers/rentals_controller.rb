@@ -32,7 +32,7 @@ class RentalsController < ApplicationController
     def search_params
       search = {}
       search[:city] = params[:city].strip if params[:city].to_s.strip.present?
-      search[:rental_type] = params[:rental_type].join(',') if params[:rental_type].present?
+      search[:rental_type] = params[:rental_type].strip if params[:rental_type].present?
       search
     end
 

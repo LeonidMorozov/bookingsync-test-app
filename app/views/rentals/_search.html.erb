@@ -3,9 +3,7 @@
     City: <%= text_field_tag :city, params[:city] %>
     Rental Type: <%= select_tag(:rental_type,
                                 options_for_select(@rental_types.collect {|p| [ p[:name], p[:id] ] }),
-                                include_blank: true,
-                                multiple: true,
-                                size: 1) %>
+                                include_blank: true) %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
