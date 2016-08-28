@@ -18,16 +18,16 @@ class BookingsController < ApplicationController
 
     search = search_params
     if search.present?
-      @rentals = bookingsync_api.bookings_search(search)
+      @bookings = bookingsync_api.bookings_search(search)
     else
-      @rentals = bookingsync_api.bookings(per_page: 10, page: page)
+      @bookings = bookingsync_api.bookings(per_page: 10, page: page)
     end
 
   end
 
   # GET /bookings/1.html
   def show
-    @rental = bookingsync_api.booking(params[:id])
+    @booking = bookingsync_api.booking(params[:id])
   end
 
   private
