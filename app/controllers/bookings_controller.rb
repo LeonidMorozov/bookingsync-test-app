@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
 
     search = search_params
     if search.present?
-      @bookings = bookingsync_api.bookings_search(search)
+      @bookings = bookingsync_api.bookings(search)
     else
       @bookings = bookingsync_api.bookings(per_page: 10, page: page)
     end
