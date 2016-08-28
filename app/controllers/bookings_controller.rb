@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
       search = {}
       search[:rental_id] = params[:rental_id].to_i if params[:rental_id].present?
       search[:client_id] = params[:client_id].to_i if params[:client_id].present?
-      search[:booking_status] = params[:booking_status].strip if params[:booking_status].present?
+      search[:booking_status] = params[:booking_status].strip.to_a if params[:booking_status].present?
       search[:include_canceled] = ['true', true].include?(params[:include_canceled]) if params[:include_canceled].present?
       search
     end
