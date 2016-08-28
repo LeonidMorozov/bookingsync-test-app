@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
   def index
     # TODO: ideally should be modal/popup window with search instead of select tag on @rentals and @bookings
     @rentals = bookingsync_api.rentals({fields: [:id,:name]})
-    @bookings = bookingsync_api.bookings({fields: [:id,:fullname]})
+    @clients = bookingsync_api.clients({fields: [:id,:fullname]})
     @booking_statuses = [
         {id: 'booked', name: 'Booked'},
         {id: 'unavailable', name: 'Unavailable'},
