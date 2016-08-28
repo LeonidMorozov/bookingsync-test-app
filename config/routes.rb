@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :rentals, only: [:index, :show]
 
+  resources :bookings, only: [:index, :show]
+
   resources :clients, only: [:index, :show]
 
   root :to => "accounts#current"

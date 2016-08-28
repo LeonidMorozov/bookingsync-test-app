@@ -1,0 +1,29 @@
+<h1>Bookings</h1>
+
+<%= render 'search' %>
+
+<hr/>
+
+<% if @bookings.any? %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Start at</th>
+    <th>End at</th>
+    <th>Status</th>
+  </tr>
+
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= link_to booking[:id], action: :show, id: booking[:id] %></td>
+      <td><%= booking[:start_at] %></td>
+      <td><%= booking[:end_at] %></td>
+      <td><%= booking[:status] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% else %>
+  <p>No bookings</p>
+<% end %>

@@ -1,0 +1,23 @@
+<%= form_tag bookings_path, :method => 'get' do %>
+  <p>
+    Rental: <%= select_tag(:rental_id,
+                                options_for_select(
+                                    @rentals.collect {|p| [ p[:name], p[:id] ] },
+                                    selected: params[:rental_id]
+                                ),
+                                include_blank: 'Select rental...') %>
+    Client: <%= select_tag(:client_id,
+                                options_for_select(
+                                    @clients.collect {|p| [ p[:fullname], p[:id] ] },
+                                    selected: params[:client_id]
+                                ),
+                                include_blank: 'Select client...') %>
+    Booking Status: <%= select_tag(:booking_status,
+                                options_for_select(
+                                    @booking_statuses.collect {|p| [ p[:name], p[:id] ] },
+                                    selected: params[:booking_status]
+                                ),
+                                include_blank: 'Select status...') %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>

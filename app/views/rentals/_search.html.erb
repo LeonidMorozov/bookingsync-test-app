@@ -6,7 +6,7 @@
                                     @rental_types.collect {|p| [ p[:name], p[:id] ] },
                                     selected: params[:rental_type]
                                 ),
-                                include_blank: true) %>
+                                include_blank: 'Select type...') %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
