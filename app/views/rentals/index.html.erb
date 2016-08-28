@@ -1,16 +1,6 @@
 <h1>Rentals</h1>
 
-<%= form_tag rentals_path, :method => 'get' do %>
-  <p>
-    City: <%= text_field_tag :city, params[:city] %>
-    Rental Type: <%= select_tag(:rental_type,
-                                options_for_select(@rental_types.collect {|p| [ p[:name], p[:id] ] }),
-                                include_blank: true,
-                                multiple: true,
-                                size: 3) %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
+<%= render 'search' %>
 
 <hr/>
 
@@ -24,9 +14,9 @@
 
   <% @rentals.each do |rental| %>
     <tr>
-      <td><%= link_to rental[:name], action: :show, id: rental[:id] %></td>
+      <td><%= link_to (rental[:name].present? ? rental[:name] : 'Unknown') , action: :show, id: rental[:id] %></td>
       <% #TODO: should be ENUM value instead %>
-      <td><%= rental[:rental_type] %></td>
+      <td><%= rental[:rental_type].present? ? rental[:rental_type] : 'Unknown' %></td>
     </tr>
   <% end %>
 </table>
