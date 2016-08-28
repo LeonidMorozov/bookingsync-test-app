@@ -8,9 +8,11 @@ class BookingsController < ApplicationController
     cache_ttl = 1.hour
     @rentals = Rails.cache.fetch("account_#{current_account.id}/rentals", expires_in: cache_ttl) do
       bookingsync_api.rentals({fields: [:id,:name], auto_paginate: true})
+        .collect {|p| { name: p[:name], id: p[:id] } }
     end
     @clients = Rails.cache.fetch("account_#{current_account.id}/clients", expires_in: cache_ttl) do
       bookingsync_api.clients({fields: [:id,:fullname], auto_paginate: true})
+        .collect {|p| { fullname: p[:fullname], id: p[:id] } }
     end
       @booking_statuses = [
         {id: "booked", name: "Booked"},
