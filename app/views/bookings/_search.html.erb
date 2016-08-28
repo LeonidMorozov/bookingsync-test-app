@@ -18,6 +18,7 @@
                                     selected: params[:booking_status]
                                 ),
                                 include_blank: 'Select status...') %>
+    Include canceled: <%= check_box_tag :include_canceled, true, params[:include_canceled] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
