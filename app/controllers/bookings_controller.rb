@@ -23,8 +23,6 @@ class BookingsController < ApplicationController
     @booking = bookingsync_api.booking(params[:id])
   end
 
-  protected
-
   def rentals
     Rails.cache.fetch("account_#{current_account.id}/rentals", expires_in: CACHE_TTL) do
       bookingsync_api.rentals(fields: [:id, :name], auto_paginate: true)
