@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_account!
-  after_action :allow_bookingsync_iframe
+  include AuthControllerBase
+  include Pagination
 
   # GET /bookings.html
   def index
@@ -12,12 +12,14 @@ class BookingsController < ApplicationController
     @rentals = rentals
     @clients = clients
     @booking_statuses = booking_statuses
+
     search = search_params
     if search.present?
       #TODO: expected bookingsync_api.bookings_search there
-      @bookings = bookingsync_api.bookings(search)
+      # assume we have bookingsync_api.bookings_search here, otherwise wo don't need `if search.present?/else` block here
+      @bookings = bookingsync_api.bookings(search, per_page: @per_page, page: @page)
     else
-      @bookings = bookingsync_api.bookings(per_page: 10, page: page)
+      @bookings = bookingsync_api.bookings(per_page: @per_page, page: @page)
     end
   end
 
