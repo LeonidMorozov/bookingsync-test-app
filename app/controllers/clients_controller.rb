@@ -9,12 +9,10 @@ class ClientsController < ApplicationController
     page = 1 if page <= 0
 
     @clients = bookingsync_api.clients(per_page: 10, page: page)
-
   end
 
   # GET /clients/1.html
   def show
     @client = bookingsync_api.client(params[:id])
   end
-
 end

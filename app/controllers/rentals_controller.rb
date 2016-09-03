@@ -5,9 +5,9 @@ class RentalsController < ApplicationController
   # GET /rentals.html
   def index
     @rental_types = [
-        {id: 'apartment', name: 'Apartment'},
-        {id: 'holiday-home', name: 'Holiday Home'},
-        {id: 'villa', name: 'Villa'}
+        { id: "apartment", name: "Apartment" },
+        { id: "holiday-home", name: "Holiday Home" },
+        { id: "villa", name: "Villa" }
     ]
     # TODO: find out how to get pagination details from API response
     page = params[:page].to_i
@@ -19,7 +19,6 @@ class RentalsController < ApplicationController
     else
       @rentals = bookingsync_api.rentals(per_page: 10, page: page)
     end
-
   end
 
   # GET /rentals/1.html
@@ -29,11 +28,10 @@ class RentalsController < ApplicationController
 
   private
 
-    def search_params
-      search = {}
-      search[:city] = params[:city].strip if params[:city].to_s.strip.present?
-      search[:rental_type] = params[:rental_type].strip if params[:rental_type].present?
-      search
-    end
-
+  def search_params
+    search = {}
+    search[:city] = params[:city].strip if params[:city].to_s.strip.present?
+    search[:rental_type] = params[:rental_type].strip if params[:rental_type].present?
+    search
+  end
 end
