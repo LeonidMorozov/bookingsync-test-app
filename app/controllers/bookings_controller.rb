@@ -9,6 +9,9 @@ class BookingsController < ApplicationController
     page = params[:page].to_i
     page = 1 if page <= 0
 
+    @rentals = rentals
+    @clients = clients
+    @booking_statuses = booking_statuses
     search = search_params
     if search.present?
       #TODO: expected bookingsync_api.bookings_search there
@@ -22,6 +25,8 @@ class BookingsController < ApplicationController
   def show
     @booking = bookingsync_api.booking(params[:id])
   end
+
+  private
 
   def rentals
     Rails.cache.fetch("account_#{current_account.id}/rentals", expires_in: CACHE_TTL) do
@@ -39,13 +44,11 @@ class BookingsController < ApplicationController
 
   def booking_statuses
     [
-      { id: "booked", name: "Booked" },
-      { id: "unavailable", name: "Unavailable" },
-      { id: "tentative", name: "Tentative" }
+        { id: "booked", name: "Booked" },
+        { id: "unavailable", name: "Unavailable" },
+        { id: "tentative", name: "Tentative" }
     ]
   end
-
-  private
 
   def search_params
     search = {}
