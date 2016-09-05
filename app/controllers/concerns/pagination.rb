@@ -14,7 +14,7 @@ module Pagination
   def page
     if @page.nil?
       @page = params[:page].to_i if params[:page]
-      @page ||= 0
+      @page = 1 if @page.to_i <= 0
     end
     @page
   end
