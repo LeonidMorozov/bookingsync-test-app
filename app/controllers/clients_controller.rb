@@ -1,10 +1,9 @@
 class ClientsController < ApplicationController
-  include BookingsyncApiControllerBase
-  include Pagination
+  include BookingsyncApiAuth
 
   # GET /clients.html
   def index
-    @clients = bookingsync_api.clients(per_page: per_page, page: page)
+    @clients = bookingsync_api.clients(pagination_params)
   end
 
   # GET /clients/1.html

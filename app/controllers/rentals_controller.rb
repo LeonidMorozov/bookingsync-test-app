@@ -1,6 +1,5 @@
 class RentalsController < ApplicationController
-  include BookingsyncApiControllerBase
-  include Pagination
+  include BookingsyncApiAuth
 
   # GET /rentals.html
   def index
@@ -8,9 +7,9 @@ class RentalsController < ApplicationController
     # TODO: find out how to get pagination details from API response
     search = search_params
     if search.present?
-      @rentals = bookingsync_api.rentals_search(search)
+      @rentals = bookingsync_api.rentals_search(search.merge(pagination_params))
     else
-      @rentals = bookingsync_api.rentals(per_page: per_page, page: page)
+      @rentals = bookingsync_api.rentals(pagination_params)
     end
   end
 
@@ -20,14 +19,6 @@ class RentalsController < ApplicationController
   end
 
   private
-
-  def rental_types
-    [
-      { id: "apartment", name: "Apartment" },
-      { id: "holiday-home", name: "Holiday Home" },
-      { id: "villa", name: "Villa" }
-    ]
-  end
 
   def search_params
     search = {}

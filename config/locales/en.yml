@@ -36,7 +36,7 @@ en:
   search: "Search"
   select_rental: "Select rental"
   select_client: "Select client"
-  select_booking: "Select booking"
+  select_status: "Select status"
   select_type: "Select type"
   include_canceled: "Include canceled"
   no_bookings: "No bookings"

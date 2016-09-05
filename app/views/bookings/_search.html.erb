@@ -17,7 +17,7 @@
                                     @booking_statuses.collect {|p| [ p[:name], p[:id] ] },
                                     selected: params[:booking_status]
                                 ),
-                                include_blank: t('select_booking') + '...') %>
+                                include_blank: t('select_status') + '...') %>
     <%= t('include_canceled') %>: <%= check_box_tag :include_canceled, true, params[:include_canceled] %>
     <%= submit_tag t('search'), :name => nil %>
   </p>
