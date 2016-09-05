@@ -1,6 +1,8 @@
 module Pagination
   extend ActiveSupport::Concern
 
+  protected
+
   def per_page
     if @per_page.nil?
       @per_page = params[:per_page].to_i if params[:per_page]

@@ -1,13 +1,11 @@
 class BookingsController < ApplicationController
-  include AuthControllerBase
+  include BookingsyncApiControllerBase
   include Pagination
 
   # GET /bookings.html
   def index
     # TODO: ideally should be modal/popup window with search instead of select tag on @rentals and @bookings
     # TODO: find out how to get pagination details from API response
-    page = params[:page].to_i
-    page = 1 if page <= 0
 
     @rentals = rentals
     @clients = clients
@@ -17,9 +15,9 @@ class BookingsController < ApplicationController
     if search.present?
       #TODO: expected bookingsync_api.bookings_search there
       # assume we have bookingsync_api.bookings_search here, otherwise wo don't need `if search.present?/else` block here
-      @bookings = bookingsync_api.bookings(search, per_page: @per_page, page: @page)
+      @bookings = bookingsync_api.bookings(search, per_page: per_page, page: page)
     else
-      @bookings = bookingsync_api.bookings(per_page: @per_page, page: @page)
+      @bookings = bookingsync_api.bookings(per_page: per_page, page: page)
     end
   end
 
@@ -46,9 +44,9 @@ class BookingsController < ApplicationController
 
   def booking_statuses
     [
-        { id: "booked", name: "Booked" },
-        { id: "unavailable", name: "Unavailable" },
-        { id: "tentative", name: "Tentative" }
+      { id: "booked", name: "Booked" },
+      { id: "unavailable", name: "Unavailable" },
+      { id: "tentative", name: "Tentative" }
     ]
   end
 

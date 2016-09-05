@@ -1,14 +1,10 @@
 class ClientsController < ApplicationController
-  before_action :authenticate_account!
-  after_action :allow_bookingsync_iframe
+  include BookingsyncApiControllerBase
+  include Pagination
 
   # GET /clients.html
   def index
-    # TODO: find out how to get pagination details from API response
-    page = params[:page].to_i
-    page = 1 if page <= 0
-
-    @clients = bookingsync_api.clients(per_page: 10, page: page)
+    @clients = bookingsync_api.clients(per_page: per_page, page: page)
   end
 
   # GET /clients/1.html
