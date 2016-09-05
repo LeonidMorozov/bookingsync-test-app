@@ -1,4 +1,4 @@
-<h1>Rentals</h1>
+<h1><%= t('rentals') %></h1>
 
 <%= render 'search' %>
 
@@ -8,19 +8,19 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Type</th>
+    <th><%= t('name') %></th>
+    <th><%= t('type') %></th>
   </tr>
 
   <% @rentals.each do |rental| %>
     <tr>
-      <td><%= link_to (rental[:name].present? ? rental[:name] : 'Unknown') , action: :show, id: rental[:id] %></td>
+      <td><%= link_to (rental[:name].present? ? rental[:name] : t('unknown')) , action: :show, id: rental[:id] %></td>
       <% #TODO: should be ENUM value instead %>
-      <td><%= rental[:rental_type].present? ? rental[:rental_type] : 'Unknown' %></td>
+      <td><%= rental[:rental_type].present? ? rental[:rental_type] : t('unknown') %></td>
     </tr>
   <% end %>
 </table>
 
 <% else %>
-  <p>No rentals</p>
+  <p><%= t('no_rentals') %></p>
 <% end %>

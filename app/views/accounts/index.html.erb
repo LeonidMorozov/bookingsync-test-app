@@ -1,11 +1,11 @@
-<h1>Accounts</h1>
+<h1><%= t('accounts') %></h1>
 
 <% if @accounts %>
 
 <table>
   <tr>
-    <th>Business name</th>
-    <th>Status</th>
+    <th><%= t('business_name') %></th>
+    <th><%= t('status') %></th>
   </tr>
 
   <% @accounts.each do |account| %>

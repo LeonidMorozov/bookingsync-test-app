@@ -1,10 +1,10 @@
-<h1>Clients</h1>
+<h1><%= t('clients') %></h1>
 
 <% if @clients.any? %>
 
 <table>
   <tr>
-    <th>Full name</th>
+    <th><%= t('full_name') %></th>
   </tr>
 
   <% @clients.each do |client| %>
@@ -15,5 +15,5 @@
 </table>
 
 <% else %>
-  <p>No clients</p>
+  <p><%= t('no_clients') %></p>
 <% end %>

@@ -1,4 +1,4 @@
-<h1>Bookings</h1>
+<h1><%= t('bookings') %></h1>
 
 <%= render 'search' %>
 
@@ -8,10 +8,10 @@
 
 <table cellspacing="10">
   <tr>
-    <th>ID</th>
-    <th>Start at</th>
-    <th>End at</th>
-    <th>Status</th>
+    <th><%= t('id') %></th>
+    <th><%= t('start_at') %></th>
+    <th><%= t('end_at') %></th>
+    <th><%= t('status') %></th>
   </tr>
 
   <% @bookings.each do |booking| %>
@@ -25,5 +25,5 @@
 </table>
 
 <% else %>
-  <p>No bookings</p>
+  <p><%= t('no_bookings') %></p>
 <% end %>

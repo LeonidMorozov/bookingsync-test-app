@@ -1,12 +1,12 @@
-<%= form_tag rentals_path, :method => 'get' do %>
+<%= form_tag rentals_path, method: :get do %>
   <p>
-    City: <%= text_field_tag :city, params[:city] %>
-    Rental Type: <%= select_tag(:rental_type,
+    <%= t('city') %>: <%= text_field_tag :city, params[:city] %>
+    <%= t('rental_type') %>: <%= select_tag(:rental_type,
                                 options_for_select(
-                                    @rental_types.collect {|p| [ p[:name], p[:id] ] },
-                                    selected: params[:rental_type]
+                                  @rental_types.collect {|p| [ p[:name], p[:id] ] },
+                                  selected: params[:rental_type]
                                 ),
-                                include_blank: 'Select type...') %>
-    <%= submit_tag "Search", :name => nil %>
+                                include_blank: t('select_type') + '...') %>
+    <%= submit_tag t('search'), :name => nil %>
   </p>
 <% end %>

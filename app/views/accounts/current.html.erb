@@ -1,10 +1,10 @@
-<h1>Hello <%= @current_account.name %></h1>
+<h1><%= t('hello') %>, <%= @current_account.name %></h1>
 
-Here you can see:
+<%= t('here_you_can_see') %>:
 
 <ul>
-  <li><%= link_to 'Accounts', accounts_path %></li>
-  <li><%= link_to 'Rentals', rentals_path %></li>
-  <li><%= link_to 'Bookings', bookings_path %></li>
-  <li><%= link_to 'Clients', clients_path %></li>
+  <li><%= link_to t('accounts'), accounts_path %></li>
+  <li><%= link_to t('rentals'), rentals_path %></li>
+  <li><%= link_to t('bookings'), bookings_path %></li>
+  <li><%= link_to t('clients'), clients_path %></li>
 </ul>

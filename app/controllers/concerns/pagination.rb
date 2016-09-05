@@ -6,7 +6,7 @@ module Pagination
   def per_page
     if @per_page.nil?
       @per_page = params[:per_page].to_i if params[:per_page]
-      @per_page ||= PAGINATION_PER_PAGE
+      @per_page ||= PAGINATION_PER_PAGE if @per_page.to_i < 1 || @per_page > PAGINATION_MAX_PER_PAGE
     end
     @per_page
   end
