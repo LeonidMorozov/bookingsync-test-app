@@ -12,10 +12,10 @@
                                     selected: params[:client_id]
                                 ),
                                 include_blank: t('select_client') + '...') %>
-    <%= t('booking') %> <%= t('status') %>: <%= select_tag(:booking_status,
+    <%= t('booking') %> <%= t('status') %>: <%= select_tag(:status,
                                 options_for_select(
                                     @booking_statuses.collect {|p| [ p[:name], p[:id] ] },
-                                    selected: params[:booking_status]
+                                    selected: params[:status]
                                 ),
                                 include_blank: t('select_status') + '...') %>
     <%= t('include_canceled') %>: <%= check_box_tag :include_canceled, true, params[:include_canceled] %>
