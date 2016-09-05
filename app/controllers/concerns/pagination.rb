@@ -18,5 +18,4 @@ module Pagination
     end
     @page
   end
-
 end

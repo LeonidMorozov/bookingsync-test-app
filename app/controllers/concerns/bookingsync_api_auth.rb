@@ -56,5 +56,4 @@ module BookingsyncApiAuth
   def cache_key(key)
     "account_#{current_account.id}/#{key}"
   end
-
 end
